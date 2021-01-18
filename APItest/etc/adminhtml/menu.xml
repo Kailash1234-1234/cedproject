@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+      <add id="Ced_APItest::apitest" title="API TEST" translate="title" module="Ced_APItest" sortOrder="12" dependsOnModule="Ced_APItest" resource="Ced_APItest::apitest" />
+       <!-- <add id="Ced_Brand::addbrand" title="Add Brand" translate="title" module="Ced_Brand" parent="Ced_Brand::brands" sortOrder="10" dependsOnModule="Ced_Brand" action="brand/createmenu/addbrand" resource="Ced_Brand::addbrand"/> 
+       dependsOnConfig="section/group/field"-->
+      <add id="Ced_APItest::showapilist" title="API LIST DATA" translate="title" module="Ced_APItest" parent="Ced_APItest::apitest" sortOrder="10" dependsOnModule="Ced_APItest" action="apitest/createapi/showapilist" resource="Ced_APItest::showapilist" />
+    </menu>
+</config>

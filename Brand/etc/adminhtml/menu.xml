@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+      <add id="Ced_Brand::brands" title="Brand" translate="title" module="Ced_Brand" sortOrder="12" dependsOnModule="Ced_Brand" resource="Ced_Brand::Brands" dependsOnConfig="brand/general/enable" />
+       <!-- <add id="Ced_Brand::addbrand" title="Add Brand" translate="title" module="Ced_Brand" parent="Ced_Brand::brands" sortOrder="10" dependsOnModule="Ced_Brand" action="brand/createmenu/addbrand" resource="Ced_Brand::addbrand"/> 
+       dependsOnConfig="section/group/field"-->
+      <add id="Ced_Brand::showbrand" title="Show Brand" translate="title" module="Ced_Brand" parent="Ced_Brand::brands" sortOrder="10" dependsOnModule="Ced_Brand" action="brand/createmenu/showbrand" resource="Ced_Brand::showbrand" />
+    </menu>
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="slider_table" resource="default" engine="innodb" comment="Slider Table">
+        <column xsi:type="int" name="slider_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Slider ID"/>
+        <column xsi:type="varchar" name="slider_image" padding="5" unsigned="true" nullable="false"
+                identity="false" default="0" comment="Slider Image"/>
+        <column xsi:type="varchar" name="slider_name" nullable="false"  default="0" comment="Slider Name"/>
+        <column xsi:type="varchar" name="slider_desc" nullable="false"  default="0" comment="Slider Desc"/>
+        <column xsi:type="varchar" name="slider_sort_order" nullable="true" length="64" comment="Slider Sort Order"/>
+         <column xsi:type="varchar" name="store_id" nullable="true" length="64" comment="Like Message"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="slider_id"/>
+        </constraint>
+    </table>
+</schema>

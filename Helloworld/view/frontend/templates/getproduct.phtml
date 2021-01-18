@@ -1,0 +1,132 @@
+<?php
+
+/* @var Ced\Helloworld\Block\Hello $block */
+?>
+<?php
+$productCollection = $block->getProductCollection();
+$likeproduct = $block->getLikeProductCollection();
+
+// foreach ($likeproduct as $key=>$likedata) {
+//     print_r($likedata);     
+//     echo "<br>";
+// }
+?>
+
+<h1>
+My Product list here..
+</h1>
+<table class="data table-bordered alert-success" id="test-data-table">
+    <thead>
+        <tr class="alert-warning ">
+            <th scope="col" class="col Sno">S.No</th>
+            <th scope="col" class="col name"> Name</th>
+            <th scope="col" class="col sku">SKU </th>
+            <th scope="col" class="col description">Description</th>
+            <th scope="col" class="col price">Price</th>
+            <th scope="col" class="col image">Image</th>
+            <th scope="col" class="col actions">Action</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        <?php $count=1; ?>
+        <?php foreach ($productCollection as $key => $data):
+        
+          
+            $myurl= $block->getBaseUrl().'catalog/product/view/id/'.$data->getEntityId();
+            $ip=$_SERVER['REMOTE_ADDR'];
+            ?>
+            <tr>
+                <th onclick="window.location.href='<?php echo $myurl; ?>'" data-th="S NO" class="col Sno"><?php echo $count++ ?></th>
+                <td onclick="window.location.href='<?php echo $myurl; ?>'" data-th="Name" class="col name"><?php echo $data->getName(); ?></td>
+                <td onclick="window.location.href='<?php echo $myurl; ?>'" data-th="Sku" class="col sku"><?php echo $data->getSKU(); ?></td>
+                <td onclick="window.location.href='<?php echo $myurl; ?>'" data-th="Description" class="col description"><?php echo $data->getDescription(); ?></td>
+                <td onclick="window.location.href='<?php echo $myurl; ?>'" data-th="Price" class="col price"><?php echo $data->getPrice(); ?></td>
+                <td onclick="window.location.href='<?php echo $myurl; ?>'" data-th="Image" class="col image" >
+                <img src="<?php echo $this->helper('Magento\Cms\Helper\Wysiwyg\Images')->getBaseUrl().'catalog/product'.$data->getImage(); ?>" alt=""></td>
+               
+               <?php
+                 $likecount=0;
+                 $currentIp='';
+                 $likeproductId=0;
+             foreach ($likeproduct as $key => $datalike):
+                $currentIp = $datalike['like_message'];
+                $likeproductId = $datalike['like_set_id'];
+               if ($datalike['like_set_id']==$data->getEntityId()): 
+                  $likecount++;
+               ?>
+                <?php
+                   
+                endif;
+                    ?>
+              <?php
+                 endforeach;?>
+                  <td data-th="Actions" class="col actions">
+
+                    <button href="#" data-id="<?php echo $ip; ?>" data-prodid="<?php  echo $data->getEntityId();  ?>" class="like btn btn-warning pl-2 pr-2"> like </button><br><br>
+                </td>
+                 <td>
+                 <span class="p-3 text-success bg-warning"> <?php echo $likecount;  ?> </span>
+             </td>
+          </tr> <?php
+         endforeach; ?>
+    </tbody>
+</table>
+
+
+
+<!-- <table class="data table-bordered alert-success" id="test-data-table">
+    <thead>
+        <tr class="alert-warning ">
+            <th scope="col" class="col Sno">S.No</th>
+            <th scope="col" class="col name">Like Count</th>
+            <th scope="col" class="col sku">Dis Like Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php // $count=1; ?>
+        <?php //foreach ($likeproduct as $key => $data):
+            ?>
+            <tr>
+                <th  data-th="S NO" class="col Sno"><?php //echo $count++ ?></th>
+                <td  data-th="likecount" class="col name"><?php //echo $data['like_count']; ?></td>
+                <td  data-th="dislike" class="col sku"><?php //echo $data['dislike_count']; ?></td>
+            </tr>
+        <?php // endforeach; ?>
+    </tbody>
+</table> -->
+
+<script type="text/javascript">
+require(['jquery','jquery/ui'],function($){
+    $(document).ready(function(){
+        $(".dislike").on("click", function(){
+        alert("Are you sure to dislike this product");
+        })
+
+        $(".like").on("click", function(){
+            var ipaddress=$(this).data("id");
+            var productid=$(this).data("prodid");
+            //var currentip=$(this).data("currentIp");
+           // alert(ipaddress + currentip);
+           // alert(productid);
+           
+            $.ajax({
+                method : "POST",
+                url : "<?php echo $this->getUrl('helloworld/addproduct/addproductlist') ?>",
+                data : {
+                    action :"likeadd",
+                    ipaddress : ipaddress,
+                    prodid : productid 
+                },
+                success : function(data){
+                    console.log(data);
+                    alert("you liked product");
+                },
+                error : function(data){
+                    alert("you are already liked");
+                }
+            })
+        })
+    })
+})
+</script>

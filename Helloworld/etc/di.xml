@@ -1,0 +1,5 @@
+<config>
+  <type name="Magento\Catalog\Model\Product">
+    <!-- <plugin name="change_product" type="Ced\Helloworld\Plugin\Product" sortOrder="1" disabled="false"/> -->
+  </type>
+</config>

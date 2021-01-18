@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">api_uiform.api_uiform_data_source</item>
+            <item name="deps" xsi:type="string">api_uiform.api_uiform_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Employee Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">slider_uiform</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+       <!-- <item name="save" xsi:type="string">Pfay\Contacts\Block\Adminhtml\Contact\Edit\SaveButton</item> -->
+            <button name="save" class="Ced\APItest\Block\Adminhtml\Apibutton\Edit\Button\SaveButton"/>
+            <button name="back" class="Ced\APItest\Block\Adminhtml\Apibutton\Edit\Button\BackButton"/>
+        </buttons>
+    </settings>
+    <dataSource name="customer_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="apitest/createapi/searchdata"/>
+        </settings>
+        <dataProvider class="Ced\APItest\Model\DataProvider" name="api_uiform_data_source">
+            <settings>
+                <requestFieldName>slider_id</requestFieldName>
+                <primaryFieldName>slider_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="slider_details">
+     <settings>
+        <label translate="true">Select Categries</label>
+    </settings>
+     <!-- <field name="slider_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">block</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>slider_id</dataScope>
+            </settings>
+        </field> -->
+    
+        <field name="admin_category_form_field">
+                <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Ced\APItest\Model\Sources\Categories</item>
+                        <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" translate="true" xsi:type="string">Field Label</item>
+                        <item name="formElement" xsi:type="string">multiselect</item>
+                        <item name="source" xsi:type="string">FieldName</item>
+                        <item name="sortOrder" xsi:type="number">20</item>
+                        <item name="dataScope" xsi:type="string">admin_category_form_field</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">false</item>
+                        </item>
+                    </item>
+                </argument>
+         </field>
+
+
+      
+    </fieldset>
+</form>

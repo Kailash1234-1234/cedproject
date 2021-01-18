@@ -1,0 +1,52 @@
+<?php 
+// Add Some Code Here for design
+?>
+<?php
+$customer=$block->getCustomerCollection();
+// foreach($customer as $customerdata){
+//     print_r($customerdata['entity_id']);
+//     print_r($customerdata['firstname']);
+//     print_r($customerdata['email']);
+// }
+?>
+
+<table class="data" id="test-data-table">
+    <thead>
+        <tr>
+            <th>
+                <h3 style="color:red; text-align:center;"> Customer Attribute list here..</h3>
+            </th>
+        </tr>
+    </thead>
+    <tbody> 
+        <?php foreach ($customer as $key => $data):
+            ?>
+            <tr>  
+                <th scope="col" class="col name">Customer Id</th>  <td  data-th="Name" class="col name"><?php echo $data->getId(); ?></td>
+            </tr>
+            <tr>
+                <th scope="col" class="col name"> Name</th>  <td  data-th="Name" class="col name"><?php echo $data->getName(); ?></td>
+            </tr>
+            <tr>
+                <th scope="col" class="col name">Email </th>  <td  data-th="Name" class="col name"><?php echo $data->getEmail(); ?></td>
+            </tr>
+            <tr>
+                <th scope="col" class="col name">Active</th>  <td  data-th="Name" class="col name"><?php if($data['active']==1){
+                    echo "Yes";
+                } else {
+                    echo "No";
+                }; ?></td>
+            </tr>
+            <tr>
+                <th scope="col" class="col name">Favorite Color </th>  <td  data-th="Name" class="col name"><?php echo $data->getFavoriteColor(); ?></td>
+            </tr>
+            <tr>
+                <th scope="col" class="col name">Year Of Cradit Card</th>  <td  data-th="Name" class="col name"><?php echo $data['year_of_creadit_card']; ?></td>
+            </tr>
+            <tr>
+                <th scope="col" class="col name">Area Of Interest</th>  <td  data-th="Name" class="col name"><?php echo $data['area_of_interest']; ?></td>
+            </tr> 
+            <?php
+         endforeach; ?>
+    </tbody>
+</table>

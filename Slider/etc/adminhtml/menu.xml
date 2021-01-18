@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+      <add id="Ced_Slider::sliders" title="Slider" translate="title" module="Ced_Slider" sortOrder="50" dependsOnModule="Ced_Slider" resource="Ced_Slider::sliders"/>
+      <add id="Ced_Slider::showslider" title="Add Slider" translate="title" module="Ced_Slider" parent="Ced_Slider::sliders" sortOrder="10" dependsOnModule="Ced_Slider" action="slider/createmenu/index" resource="Ced_Slider::showslider"/>
+       <add id="Ced_Slider::addslider" title="Slider Listing" translate="title" module="Ced_Slider" parent="Ced_Slider::sliders"
+       sortOrder="10" dependsOnModule="Ced_Slider" action="slider/createmenu/addslider" resource="Ced_Slider::addslider"/>
+    </menu>
+</config>

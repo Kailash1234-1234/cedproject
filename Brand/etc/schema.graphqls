@@ -1,0 +1,27 @@
+type Query {
+    testbrand(
+        brand_id: Int @doc(description: "brand of the product")
+    ): testbrand 
+@resolver(class:"Ced\\Brand\\Model\\Resolver\\Brand") 
+@doc(description:
+    "The testbrand query returns information about a brand") 
+@cache(cacheable: false)
+}
+type testbrand @doc(description: "testbrand defines the brand name and other details") {
+    brand_id: Int
+    brand_name: String
+    brand_desc: String
+    brand_status: Int
+    brand_image: String
+    created_at:String
+}
+
+
+type Mutation {
+  CreateBrand(brand_name: String!,brand_desc: String!, brand_status: Int!): BrandCreate @resolver(class: "\\Ced\\Brand\\Model\\Resolver\\CreateBrand") @doc(description:"Create Brand and returns its Id and corresponding message")
+}
+
+type BrandCreate {
+   message: String @doc(description: "Success or error Message")
+   brand_id: Int @doc(description: "The Brand id")  
+}

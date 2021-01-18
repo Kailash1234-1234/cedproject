@@ -1,0 +1,52 @@
+<?php
+
+/* @var Ced\Helloworld\Block\Hello $block */
+?>
+<?php
+$productCollection = $block->getProductCollection();
+$likeproduct = $block->getSliderpostCollection();
+?>
+<div class="owl-carousel owl-theme">
+<?php foreach ($likeproduct as $key => $data): ?>
+    <div class="item"><h1><img src="<?php echo "/magento/pub/media/wysiwyg/".$data['slider_image']; ?>" alt=""></h1></div>
+    <?php  endforeach; ?>
+</div>
+<!-- <table class="data table-bordered alert-success" id="test-data-table">
+    <thead>
+        <tr class="alert-warning ">
+            <th scope="col" class="col Sno">S.No</th>
+            <th scope="col" class="col name">Like Count</th>
+            <th scope="col" class="col sku">Dis Like Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php // $count=1; ?>
+        <?php //foreach ($likeproduct as $key => $data):
+            ?>
+            <tr>
+                <th  data-th="S NO" class="col Sno"><?php // echo $count++ ?></th>
+                <td  data-th="likecount" class="col name"><?php //echo $data['slider_id']; ?></td>
+                <td  data-th="dislike" class="col sku"><?php //echo $data['slider_name']; ?></td>
+            </tr>
+        <?php // endforeach; ?>
+    </tbody>
+</table>
+ -->
+
+<script>
+    require([
+        'jquery',
+        'owlcarousel'
+    ], function($){
+        $(document).ready(function() {
+            $('.owl-carousel ').owlCarousel({
+                loop: true,
+                nav:false,
+                items:1,
+                dots:true,
+                autoplay:true,
+                autoplayTimeout:3000
+            })
+        });
+    });
+</script>

@@ -1,0 +1,112 @@
+<?php
+
+/* @var Ced\PhtmlForm\Block\Adminhtml\CreatePhtmlForm $block */
+?>
+<h3><?= $block->getText1() ?></h3>
+
+<?php
+$countryCollection = $block->getCountries();
+
+$brand= $block->getBrandCollection()->getData();
+
+// print_r($cachedata)
+// echo "<pre>";
+//  print_r($brand);
+// echo "</pre>";
+?>
+
+<?php
+// echo $block->getFormKey()
+// echo "<pre>";
+ //print_r($countryCollection);
+// echo "</pre>";
+//
+ ?>
+
+<form class="form" id="formdata" action="<?php echo $this->getUrl("phtmlform/index/save")?>" method="post">
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?php echo __('Add Brand Name and Country Here..') ?></span></legend><br>
+        <input name="form_key" type="hidden" value="<?php /* @escapeNotVerified */ echo $block->getFormKey(); ?>" />
+        <div class="field required">
+            <label for="number" class="label">
+                <span><?php echo __('Brand Name') ?></span>
+            </label>
+
+            <div class="control">
+                <input type="text" id="brand_name"
+                       name="brand_name"
+                       class="input-text">
+            </div>
+            <br>
+            <label for="number" class="label">
+                <span><?php echo __('Select Brand Country') ?></span>
+            </label>
+            <div class="control">
+               <select name="country[]" id="country" multiple>
+                    <?php foreach($countryCollection as $data): ?>
+                            <option value="<?php echo $data['value'] ?>"><?php echo $data['label'] ?></option>
+                    <?php endforeach;  ?>
+               </select>
+            </div>
+        </div>
+        <br>
+        <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action submit primary" title="<?php echo __('Submit') ?>">
+                <span><?php echo __('Submit') ?></span>
+            </button>
+        </div>
+    </div>
+    </fieldset>
+
+  
+</form>
+<hr>
+<button class="primary"><a href="<?php echo $this->getUrl("phtmlform/index/cache")?>"> Load Cache Data</a>
+<?php
+$cachedata = $block->getCache();
+$count=0;
+if(empty($cachedata)){
+    echo "data Not found";
+} else {
+    foreach($cachedata as $data):
+        $count++; 
+    endforeach;
+}
+
+
+$count1=0;
+foreach($brand as $val):
+    $count1++; 
+endforeach;
+?>
+</button>
+<button>&nbsp;&nbsp;&nbsp;&nbsp;<span> Total Cache Data Count <?php  echo $count++; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;<span> Total Data Count <?php  echo $count1++; ?></button>
+
+
+   <div>
+  
+   <?php
+ 
+  //    print_r($cachedata); ?>
+<table>
+    <tr>
+        <th>Id  &nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>Name  &nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>Created at  &nbsp;&nbsp;&nbsp;&nbsp;</th>
+    </tr>
+<?php
+if(empty($cachedata)){
+    echo "data Not found";
+} else {
+foreach($cachedata as $data): ?>
+    <tr>
+        <td><?php  echo $data['brand_id']; ?>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><?php  echo $data['brand_name']; ?>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><?php  echo $data['created_at']; ?>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+<?php endforeach;
+} ?>
+    
+</table>
+   </div>

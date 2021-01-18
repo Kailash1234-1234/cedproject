@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * Created By : Rohan Hapani
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Ced_BlockForm::view" title="Block Form" module="Ced_BlockForm" sortOrder="13" resource="Ced_BlockForm::view"/>
+        <add id="Ced_BlockForm::grid" title="Manage Block form Records" module="Ced_BlockForm" sortOrder="12" parent="Ced_BlockForm::view" action="blockform/grid/new" resource="Ced_BlockForm::view"/>
+    </menu>
+</config>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * Created By : Rohan Hapani
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Ced_PhtmlForm::view" title="Ced_PhtmlForm" module="Ced_PhtmlForm" sortOrder="4" resource="Ced_PhtmlForm::view"/>
+        <add id="Ced_PhtmlForm::grid" title="Manage Ced_PhtmlForm" module="Ced_PhtmlForm" sortOrder="12" parent="Ced_PhtmlForm::view" action="phtmlform/index/index" resource="Ced_PhtmlForm::view"/>
+      
+    </menu>
+</config>
